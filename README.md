@@ -6,7 +6,7 @@
 get the repo from the given below url and and checkout to main branch.
 
 ```
-git remote add origin https://gitlab.dewsolutions.in/lalitp/flutter_demo_app.git
+https://github.com/LalitPr/flutter_demo_app.git
 ```
 ## Getting started
 
@@ -74,6 +74,22 @@ updated.
 6. On cart screen product card have the option to remove product. 
 7. Removing product on the cart item list will update the total price at the same time
 
+## Architecture used into project 
 
+1. Provider Architecture (MVVM)
+   In MVVM or other architectures using Provider, the term "store" is used informally to refer 
+   to a class that manages part of the application state. For instance, you may have a 
+   ProductStore or CartStore to manage product or cart-related state. This is often done using 
+   ChangeNotifier, where the store listens for changes and notifies the UI.
 
+   Architecture:
+
+   Model: Holds business logic and manages state.
+   Store: Acts as a middle layer to hold the state (like a ViewModel in MVVM).
+   Provider: Injects the store into the widget tree so UI components can access it.
+
+2. MobX Architecture
+   In MobX, the store concept is explicitly used.
+   A MobX store is a class annotated with @observable to define the state and @action to modify 
+   the state. It encapsulates the business logic and exposes observables to be consumed by the UI.
 
