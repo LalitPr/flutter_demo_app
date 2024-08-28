@@ -1,8 +1,5 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_app/utility/constants/index.dart';
-import 'package:get_it/get_it.dart';
 
 import '../core/config/environment_config.dart';
 import '../core/route/navigation_helper.dart';
@@ -14,19 +11,19 @@ class AppUtil {
   AppUtil();
 
   static void startLoading({required BuildContext context}) => showDialog<void>(
-    context: context,
-    barrierDismissible: false,
-    builder: (BuildContext context) => const SimpleDialog(
-      elevation: 0.0,
-      backgroundColor:
-      Colors.transparent, // can change this to your prefered color
-      children: <Widget>[
-        Center(
-          child: CircularProgressIndicator(),
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) => const SimpleDialog(
+          elevation: 0.0,
+          backgroundColor:
+              Colors.transparent, // can change this to your prefered color
+          children: <Widget>[
+            Center(
+              child: CircularProgressIndicator(),
+            ),
+          ],
         ),
-      ],
-    ),
-  );
+      );
 
   static void stopLoading({required BuildContext context}) {
     Navigator.pop(context);
@@ -73,30 +70,30 @@ class AppUtil {
   }
 
   static Widget getBackWidget({required BuildContext context}) => IconButton(
-    icon: Container(
-      width: Spacing.s24, // Adjust the width as needed
-      height: Spacing.s24,
-      child: const Icon(
-        Icons.arrow_back,
-        color: ColorConstants.light20,
-      ), // Adjust the height as needed
-    ),
-    onPressed: () {
-      if (NavigationHelper.canPop(context: context)) {
-        NavigationHelper.pop(context: context);
-      } else {
-        NavigationHelper.replace(
-          context: context,
-          routeName: RouteNames.initialRoute,
-        );
-      }
-    },
-  );
+        icon: const SizedBox(
+          width: Spacing.s24, // Adjust the width as needed
+          height: Spacing.s24,
+          child: Icon(
+            Icons.arrow_back,
+            color: ColorConstants.light20,
+          ), // Adjust the height as needed
+        ),
+        onPressed: () {
+          if (NavigationHelper.canPop(context: context)) {
+            NavigationHelper.pop(context: context);
+          } else {
+            NavigationHelper.replace(
+              context: context,
+              routeName: RouteNames.initialRoute,
+            );
+          }
+        },
+      );
 
   static Widget showNoDataFoundImage(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return Center(
-        child: Container(
+        child: SizedBox(
             height: size.height * .65,
             width: size.width * .65,
             child: Image.asset('assets/no_data_found.png')));

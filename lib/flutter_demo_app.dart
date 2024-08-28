@@ -16,8 +16,7 @@ class _FlutterDemoAppState extends State<FlutterDemoApp> {
 
   @override
   Widget build(BuildContext context) => MaterialApp.router(
-    routerConfig: router,
-    debugShowCheckedModeBanner: false,
-  );
-
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
+      );
 }

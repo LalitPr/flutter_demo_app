@@ -17,10 +17,9 @@ class Product {
   });
 
   // Factory method to create a Product from JSON
-  factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
 
   // Method to convert a Product instance to JSON
   Map<String, dynamic> toJson() => _$ProductToJson(this);
-
 }
-

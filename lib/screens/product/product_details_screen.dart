@@ -20,9 +20,7 @@ class ProductDetailScreen extends StatelessWidget {
         title: const Text(AppStrings.productDetails),
         foregroundColor: ColorConstants.white,
         backgroundColor: ColorConstants.theme,
-        actions: [
-          _getCartButtonWithIcon(context: context)
-        ],
+        actions: [_getCartButtonWithIcon(context: context)],
       ),
       body: _getProductDetailsView(context: context),
     );
@@ -43,9 +41,7 @@ class ProductDetailScreen extends StatelessWidget {
           icon: const Icon(Icons.shopping_cart),
           onPressed: () {
             // Navigate to Cart Screen
-            NavigationHelper.push(
-                context: context,
-                routeName: RouteNames.cart);
+            NavigationHelper.push(context: context, routeName: RouteNames.cart);
           },
         ),
       ),
@@ -103,7 +99,8 @@ class ProductDetailScreen extends StatelessWidget {
                 AppUtil.stopLoading(context: context);
                 AppUtil.showSuccess(
                     context: context,
-                    successMessage: '${product.name} ${AppStrings.addedToCart}');
+                    successMessage:
+                        '${product.name} ${AppStrings.addedToCart}');
               },
               child: const Text(
                 AppStrings.addToCart,

@@ -28,25 +28,25 @@ class _CartScreenState extends State<CartScreen> {
         padding: const EdgeInsets.all(Spacing.s16),
         child: cartStore.cartItems.isNotEmpty
             ? Column(
-          children: [
-            // Cart Items List
-            Expanded(
-              child: ListView.builder(
-                itemCount: cartStore.cartItems.length,
-                itemBuilder: (context, index) {
-                  final product = cartStore.cartItems[index];
-                  return _getListTile(
-                      context: context,
-                      cartStore: cartStore,
-                      product: product);
-                },
-              ),
-            ),
-            // Total Price
-            _getPriceSection(context: context, cartStore: cartStore),
-            _getCheckoutButton()
-          ],
-        )
+                children: [
+                  // Cart Items List
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: cartStore.cartItems.length,
+                      itemBuilder: (context, index) {
+                        final product = cartStore.cartItems[index];
+                        return _getListTile(
+                            context: context,
+                            cartStore: cartStore,
+                            product: product);
+                      },
+                    ),
+                  ),
+                  // Total Price
+                  _getPriceSection(context: context, cartStore: cartStore),
+                  _getCheckoutButton()
+                ],
+              )
             : AppUtil.showNoDataFoundImage(context),
       ),
     );
@@ -54,8 +54,8 @@ class _CartScreenState extends State<CartScreen> {
 
   Widget _getListTile(
       {required BuildContext context,
-        required CartStore cartStore,
-        required Product product}) {
+      required CartStore cartStore,
+      required Product product}) {
     return ListTile(
       leading: Image.asset('${Constants.assets}/${product.image}'),
       title: Text(product.name),

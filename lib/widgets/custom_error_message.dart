@@ -55,7 +55,7 @@ class ErrorMessageView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Container(
+                SizedBox(
                   width: Spacing.s120 * 2,
                   height: Spacing.s120 * 2,
                   child: icon,
@@ -83,7 +83,7 @@ class ErrorMessageView extends StatelessWidget {
                 const SizedBox(
                   height: Spacing.s48,
                 ),
-                Container(
+                SizedBox(
                     height: Spacing.s56,
                     child: AppTextButton(
                         title: AppStrings.tryAgain, onTap: retry!))

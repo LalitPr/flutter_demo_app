@@ -6,12 +6,12 @@ import 'flutter_demo_app.dart';
 import 'store/cart_store.dart';
 
 void main() async {
-
   runApp(
     MultiProvider(
-      providers: [ // Product Store
+      providers: [
+        // Product Store
         ChangeNotifierProvider(create: (_) => CartStore()),
-        ChangeNotifierProvider(create: (_) => ProductsStore())// Cart Store
+        ChangeNotifierProvider(create: (_) => ProductsStore()) // Cart Store
       ],
       child: const FlutterDemoApp(),
     ),

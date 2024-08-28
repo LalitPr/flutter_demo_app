@@ -42,11 +42,11 @@ class NetworkManager {
   }
 
   Future<GenericResponse<T>> get<T>(
-      String endPoint, {
-        Map<String, String>? headers,
-        Map<String, String>? queryParameters,
-        required T Function(Object? json) fromJson,
-      }) {
+    String endPoint, {
+    Map<String, String>? headers,
+    Map<String, String>? queryParameters,
+    required T Function(Object? json) fromJson,
+  }) {
     var url = Uri.parse('$baseUrl$endPoint');
     url = url.replace(queryParameters: queryParameters);
     Future<http.Response> request() async =>
@@ -55,22 +55,21 @@ class NetworkManager {
   }
 
   Future<GenericResponse<T>> post<T>(
-      String endPoint, {
-        Map<String, String>? headers,
-        Map<String, String>? queryParameters,
-        Object? body,
-        Encoding? encoding,
-        required T Function(Object? json) fromJson,
-      }) {
+    String endPoint, {
+    Map<String, String>? headers,
+    Map<String, String>? queryParameters,
+    Object? body,
+    Encoding? encoding,
+    required T Function(Object? json) fromJson,
+  }) {
     var url = Uri.parse('$baseUrl$endPoint');
     url = url.replace(queryParameters: queryParameters);
     Future<http.Response> request() async => await http.post(
-      url,
-      headers: await _generateHeaders(headers),
-      body: body,
-      encoding: encoding,
-    );
+          url,
+          headers: await _generateHeaders(headers),
+          body: body,
+          encoding: encoding,
+        );
     return _executeHttpRequest<T>(request, fromJson);
   }
-
 }

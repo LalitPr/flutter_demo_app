@@ -9,7 +9,7 @@ import '../core/api/manager/product_list_api.dart';
 
 class ProductsStore extends ChangeNotifier {
   final Observable<ObservableFuture<GenericResponse<List<Product>>?>?>
-  productList = Observable(null);
+      productList = Observable(null);
 
   ProductsStore() {
     fetchInitialData();

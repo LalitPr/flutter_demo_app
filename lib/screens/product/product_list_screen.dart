@@ -21,7 +21,6 @@ class ProductListScreen extends StatefulWidget {
 }
 
 class _ProductListScreenState extends State<ProductListScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -145,7 +144,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                       AppUtil.stopLoading(context: context);
                       AppUtil.showSuccess(
                           context: context,
-                          successMessage: '${product.name} ${AppStrings.addedToCart}');
+                          successMessage:
+                              '${product.name} ${AppStrings.addedToCart}');
                     },
                     child: const Text(
                       AppStrings.addToCart,
