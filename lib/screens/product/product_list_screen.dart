@@ -17,10 +17,10 @@ class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
 
   @override
-  _ProductListScreenState createState() => _ProductListScreenState();
+  ProductListScreenState createState() => ProductListScreenState();
 }
 
-class _ProductListScreenState extends State<ProductListScreen> {
+class ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,51 +109,16 @@ class _ProductListScreenState extends State<ProductListScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Product Image
-              ClipRRect(
-                borderRadius: BorderRadius.circular(Spacing.s10),
-                child: Image.asset('${Constants.assets}/${product.image}'),
-              ),
+              _getImageWidget(product.image),
               const SizedBox(height: Spacing.s10),
               // Product Name
-              Text(
-                product.name,
-                style: TextStyles.productNameTextStyle,
-              ),
+              _getNameWidget(product.name),
               const SizedBox(height: Spacing.s5),
               // Product Description
-              Text(
-                product.description,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis, // Limit to 2 lines
-                style: TextStyles.descriptionTextStyle,
-              ),
+              _getDescriptionWidget(product.description),
               const SizedBox(height: Spacing.s10),
               // Price and Add to Cart Button
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '\$${product.price.toStringAsFixed(2)}',
-                    style: TextStyles.priceTextStyle,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      AppUtil.startLoading(context: context);
-                      Provider.of<CartStore>(context, listen: false)
-                          .addToCart(product);
-                      AppUtil.stopLoading(context: context);
-                      AppUtil.showSuccess(
-                          context: context,
-                          successMessage:
-                              '${product.name} ${AppStrings.addedToCart}');
-                    },
-                    child: const Text(
-                      AppStrings.addToCart,
-                      style: TextStyle(color: ColorConstants.theme),
-                    ),
-                  ),
-                ],
-              ),
+              _getPriceAndAddToCartWidget(product),
             ],
           ),
         ),
@@ -164,6 +129,57 @@ class _ProductListScreenState extends State<ProductListScreen> {
             routeName: RouteNames.productDetails,
             extra: product);
       },
+    );
+  }
+
+  Widget _getImageWidget(String image) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(Spacing.s10),
+      child: Image.asset('${Constants.assets}/$image'),
+    );
+  }
+
+  Widget _getNameWidget(String name) {
+    return Text(
+      name,
+      style: TextStyles.productNameTextStyle,
+    );
+  }
+
+  Widget _getDescriptionWidget(String description) {
+    return Text(
+      description,
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis, // Limit to 2 lines
+      style: TextStyles.descriptionTextStyle,
+    );
+  }
+
+  Widget _getPriceAndAddToCartWidget(Product product) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          '\$${product.price.toStringAsFixed(2)}',
+          style: TextStyles.priceTextStyle,
+        ),
+        ElevatedButton(
+          onPressed: () {
+            AppUtil.startLoading(context: context);
+            Provider.of<CartStore>(context, listen: false)
+                .addToCart(product);
+            AppUtil.stopLoading(context: context);
+            AppUtil.showSuccess(
+                context: context,
+                successMessage:
+                '${product.name} ${AppStrings.addedToCart}');
+          },
+          child: const Text(
+            AppStrings.addToCart,
+            style: TextStyle(color: ColorConstants.theme),
+          ),
+        ),
+      ],
     );
   }
 }
