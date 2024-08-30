@@ -22,4 +22,7 @@ class Product {
 
   // Method to convert a Product instance to JSON
   Map<String, dynamic> toJson() => _$ProductToJson(this);
+
+  // Get price of items
+  String get getPrice => price.toStringAsFixed(2);
 }

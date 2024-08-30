@@ -72,7 +72,7 @@ class ProductDetailScreen extends StatelessWidget {
 
           // Product Price
           Text(
-            '\$${product.price.toStringAsFixed(2)}',
+            product.getPrice,
             style: const TextStyle(
               fontSize: Spacing.s20,
               color: Colors.green,

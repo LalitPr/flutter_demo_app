@@ -160,7 +160,7 @@ class ProductListScreenState extends State<ProductListScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          '\$${product.price.toStringAsFixed(2)}',
+          product.getPrice,
           style: TextStyles.priceTextStyle,
         ),
         ElevatedButton(
