@@ -183,3 +183,61 @@ class ProductListScreenState extends State<ProductListScreen> {
     );
   }
 }
+
+// @override
+// Widget build(BuildContext context) {
+//   final store = Provider.of<ProductsStore>(context, listen: false);
+//
+//   // Fetch initial data
+//   store.fetchInitialData();
+//
+//   return Scaffold(
+//     appBar: AppBar(
+//       title: const Text(AppStrings.products),
+//       foregroundColor: ColorConstants.white,
+//       backgroundColor: ColorConstants.theme,
+//       actions: [_getCartButtonWithIcon(context: context)],
+//     ),
+//     body: Consumer<ProductsStore>(
+//       builder: (context, store, child) {
+//         final productList = store.productList;
+//
+//         if (productList == null) {
+//           return const Center(child: CircularProgressIndicator());
+//         }
+//
+//         return FutureBuilder<GenericResponse<List<Product>>>(
+//           future: productList,
+//           builder: (context, snapshot) {
+//             if (snapshot.connectionState == ConnectionState.waiting) {
+//               return const Center(child: CircularProgressIndicator());
+//             } else if (snapshot.hasError) {
+//               return ErrorMessageView(
+//                 exceptionType: snapshot.data?.exceptionType ?? ExceptionType.others,
+//                 retry: () {
+//                   store.fetchInitialData();
+//                 },
+//               );
+//             } else if (snapshot.hasData) {
+//               final products = snapshot.data?.data ?? [];
+//               return RefreshIndicator(
+//                 onRefresh: () async => store.fetchInitialData(),
+//                 child: ListView.separated(
+//                   padding: const EdgeInsets.all(8.0),
+//                   itemCount: products.length,
+//                   itemBuilder: (context, index) => _getProductCard(
+//                     context: context,
+//                     product: products[index],
+//                   ),
+//                   separatorBuilder: (context, index) => const SizedBox(height: 8),
+//                 ),
+//               );
+//             } else {
+//               return AppUtil.showNoDataFoundImage(context);
+//             }
+//           },
+//         );
+//       },
+//     ),
+//   );
+// }
